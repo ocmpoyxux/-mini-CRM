@@ -1,0 +1,23 @@
+Bootle 
+SQLite3
+
+CREATE TABLE users ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                  'name' char(255) NOT NULL,
+                  'surname' char(255) NOT NULL,
+                  'number' int(16) NOT NULL,
+                  'birthday' date NOT NULL,
+                  'email' char(255) NOT NULL,
+                  'position' char(124) NOT NULL,
+                  'departament' char(124) NOT NULL,
+                   FOREIGN KEY ('position') REFERENCES posinions ('position')
+                   FOREIGN KEY ('departament') REFERENCES departaments ('departament'));
+
+
+CREATE TABLE positions ('position' char(124) NOT NULL,
+                        'description' char(124) NOT NULL);
+  
+
+
+CREATE TABLE departaments ('departament' char(124) NOT NULL,
+                           'mather' char(124) NOT NULL,
+                           'description' char(124) NOT NULL);
