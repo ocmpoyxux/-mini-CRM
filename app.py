@@ -13,7 +13,7 @@ def departaments_list():
 def positions_list():
     pass
 
-#@route('/users_new', method='GET')
+@route('/users_new', method='GET')
 def new_users():
     
     if request.GET.get('save','').strip():
@@ -35,7 +35,7 @@ def new_users():
     else:
         return template('new_users.tpl')
 
-@route('/positionsnew', method='GET')
+@route('/positions_new', method='GET')
 def new_positions():
     if request.GET.get('save','').strip():
         position = request.GET.get('position', '').strip()
@@ -47,16 +47,16 @@ def new_positions():
         c.execute(query)
         conn.commit()
 
-        #c.execute("SELECT last_insert_rowid()")
-        #new_id = c.fetchone()[0]
+        c.execute("SELECT last_insert_rowid()")
+        new_id = c.fetchone()[0]
         c.close
 
-        #return '<p>The new task was inserted into the database, the ID is %s</p>' %new_id
+        return '<p>The new task was inserted into the database, the ID is %s</p>' %new_id
 
     else:
-        return template('/home/v.ostrouhih/miniCRM/new_position.tpl')
+        return template('new_position.tpl')
 
-#@route('/departaments/new', method='GET')
+@route('/departaments/new', method='GET')
 def new_departaments():
     if request.GET.get('save','').strip():
 
